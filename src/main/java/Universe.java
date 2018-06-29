@@ -24,12 +24,7 @@ public class Universe {
 
     public void update() {
         Cell.CellState[][] stateCopy = getState();
-        for (int row = 0; row < state.length; row++){
-            for (int col = 0; col < state[row].length; col++){
-                int numberOfAliveMembers = getNumberOfAliveMembers(stateCopy, row, col);
-                this.state[row][col].update(numberOfAliveMembers);
-            }
-        }
+        updateUniverseState(stateCopy);
     }
 
     private int getNumberOfAliveMembers(Cell.CellState[][] state, int row, int col) {
@@ -88,5 +83,14 @@ public class Universe {
             }
         }
         return numberOfAliveMembers;
+    }
+
+    private void updateUniverseState(Cell.CellState[][] stateCopy) {
+        for (int row = 0; row < state.length; row++){
+            for (int col = 0; col < state[row].length; col++){
+                int numberOfAliveMembers = getNumberOfAliveMembers(stateCopy, row, col);
+                state[row][col].update(numberOfAliveMembers);
+            }
+        }
     }
 }
