@@ -32,7 +32,8 @@ public class CellTest {
     public void shouldMakeExpectedChanges(String initial, int numberOfNeighbors, String expected){
         Cell cell = new Cell(Cell.CellState.valueOf(initial));
 
-        Cell.CellState actual = cell.getNextState(numberOfNeighbors);
+        cell.update(numberOfNeighbors);
+        Cell.CellState actual = cell.getState();
 
         assertEquals(Cell.CellState.valueOf(expected), actual);
     }
