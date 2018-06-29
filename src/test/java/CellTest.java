@@ -36,4 +36,12 @@ public class CellTest {
 
         assertEquals(Cell.CellState.valueOf(expected), actual);
     }
+
+    @Test
+    @Parameters({"ALIVE", "DEAD"})
+    public void shouldReturnCellState(String initial){
+        Cell cell = new Cell(Cell.CellState.valueOf(initial));
+
+        assertEquals(Cell.CellState.valueOf(initial), cell.getState());
+    }
 }

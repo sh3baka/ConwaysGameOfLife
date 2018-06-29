@@ -5,6 +5,10 @@ public class Cell {
         this.state = state;
     }
 
+    public CellState getState() {
+        return state;
+    }
+
     public enum CellState {
         ALIVE, DEAD
     }
