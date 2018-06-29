@@ -24,8 +24,7 @@ public class UniverseTest {
     public void shouldUpdateCell(){
         Universe universe = new Universe(new Cell.CellState[][] { { X } });
 
-        universe.update();
-        Cell.CellState[][] actual = universe.getState();
+        Cell.CellState[][] actual = getNextState(universe);
 
         assertEquals(Cell.CellState.DEAD, actual[0][0]);
     }
@@ -43,9 +42,13 @@ public class UniverseTest {
             {O, X, O}
         };
 
-        universe.update();
-        Cell.CellState[][] actual = universe.getState();
+        Cell.CellState[][] actual = getNextState(universe);
 
         assertArrayEquals(expected, actual);
+    }
+
+    private Cell.CellState[][] getNextState(Universe universe) {
+        universe.update();
+        return universe.getState();
     }
 }
